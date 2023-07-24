@@ -18,8 +18,6 @@ public:
     void iInsert(int key);
     void Inorder(Node* p);
     Node* iSearch(int key);
-    Node* rInsert(Node* p, int key);
-    Node* rSearch(Node* p, int key);
     Node* Delete(Node* p, int key);
     int Height(Node* p);
     Node* InPre(Node* p);
@@ -88,38 +86,7 @@ Node* BST::iSearch(int key) {
     }
     return nullptr;
 }
- 
-Node* BST::rInsert(Node *p, int key) {
-    Node* t;
-    if (p == nullptr){
-        t = new Node;
-        t->data = key;
-        t->lchild = nullptr;
-        t->rchild = nullptr;
-        return t;
-    }
- 
-    if (key < p->data){
-        p->lchild = rInsert(p->lchild, key);
-    } else if (key > p->data){
-        p->rchild = rInsert(p->rchild, key);
-    }
-    return p;  // key == p->data?
-}
- 
-Node* BST::rSearch(Node *p, int key) {
-    if (p == nullptr){
-        return nullptr;
-    }
- 
-    if (key == p->data){
-        return p;
-    } else if (key < p->data){
-        return rSearch(p->lchild, key);
-    } else {
-        return rSearch(p->rchild, key);
-    }
-}
+
  
 Node* BST::Delete(Node *p, int key) {
     Node* q;
